@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/53025ffb8e.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Tailwind css link  -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- style css link  -->
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <style>
+      /* Overlay styling */
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+      }
+
+      /* Popup styling */
+      /* .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      } */
+
+      /* Popup content styling */
+      .popupContent {
+        /* Add styling for the content inside the popup */
+      }
+
+      /* Close button styling */
+      .closePopup {
+        cursor: pointer;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+
+      /* Hover effect for the close button */
+      .closePopup:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HTML Structure -->
+    <button
+      class="popupTrigger text-gray-400 left-20"
+      data-popup="uploadPrescriptionPopup"
+    >
+      Open Upload 1
+    </button>
+
+    <button
+      class="popupTrigger text-red-400"
+      data-popup="uploadPrescriptionPopup"
+    >
+      Open Upload 2
+    </button>
+
+    <button class="popupTrigger" data-popup="validPrescriptionPopup">
+      Open Valid
+    </button>
+
+    <div class="overlay popup" id="uploadPrescriptionPopup">
+      <!-- Popup content for Valid Prescription Popup -->
+      <div class="popupContent bg-[#fff] shadow-md">
+        <p>This is the content for Valid 1 2 3</p>
+      </div>
+      <button class="closePopup right-20">Close Popup</button>
+    </div>
+
+    <div class="overlay popup" id="validPrescriptionPopup">
+      <!-- Popup content for Valid Prescription Popup -->
+      <div class="popupContent bg-[#fff] shadow-md">
+        <p>This is the content for Valid Prescription Popup. 4 2 3 6</p>
+      </div>
+      <button class="closePopup right-20">Close Popup</button>
+    </div>
+    <div class="fixed top-4 left-4 cursor-pointer" onclick="smallToggleMenu()">
+      <i class="bx bx-menu text-3xl"></i>
+    </div>
+    <ul
+      id="smallDeviceMenu"
+      class="menu bg-gray-100 w-60 h-screen fixed top-0 left-0 overflow-x-hidden transition-transform duration-500 transform -translate-x-full z-9999"
+    >
+      <li
+        class="content-div -mb-[11px] hover:bg-[#E1EDE9]"
+        onclick="toggleSubMenu('subMenuId')"
+      >
+        <a href="#">
+          <img src="img/women.png" alt="" />
+          <span class="ml-2 text-[13px]">Women Care</span>
+        </a>
+        <ul class="submenu" id="subMenuId">
+          <!-- Submenu items go here -->
+          <li><a href="#">Submenu Item 1</a></li>
+          <li><a href="#">Submenu Item 2</a></li>
+          <!-- Add more submenu items as needed -->
+        </ul>
+      </li>
+      <li
+        class="content-div -mb-[11px] hover:bg-[#E1EDE9]"
+        onclick="changeContent('Women-Care', this)"
+      >
+        <a href="#">
+          <img src="img/women.png" alt="" />
+          <span class="ml-2 text-[13px]">Women Care</span>
+        </a>
+      </li>
+      <li
+        class="content-div -mb-[11px] hover:bg-[#E1EDE9]"
+        onclick="changeContent('Devices', this)"
+      >
+        <a href="#">
+          <img src="img/Devices.png" alt="" />
+          <span class="ml-2 text-[13px]">Devices</span>
+        </a>
+      </li>
+      <li
+        class="content-div -mb-[11px] hover:bg-[#E1EDE9]"
+        onclick="changeContent('Sexual-Wellness', this)"
+      >
+        <a href="#">
+          <img src="img/sexual.png" alt="" />
+          <span class="ml-2 text-[13px]">Sexual Wellness</span>
+        </a>
+      </li>
+      <li
+        class="content-div -mb-[11px] hover:bg-[#E1EDE9]"
+        onclick="changeContent('Herbal-and-Homeopathy', this)"
+      >
+        <a href="#">
+          <img src="img/Herbal.png" alt="" />
+          <span class="ml-2 text-[13px]">Herbal and Homeopathy</span>
+        </a>
+      </li>
+      <li
+        class="content-div -mb-[11px] hover:bg-[#E1EDE9]"
+        onclick="changeContent('Baby-Mom-care', this)"
+      >
+        <a href="#">
+          <img src="img/boby.png" alt="" />
+          <span class="ml-2 text-[13px]">Baby & Mom care</span>
+        </a>
+      </li>
+      <li
+        class="content-div -mb-[11px] hover:bg-[#E1EDE9]"
+        onclick="changeContent('Nutrition-and-drinks', this)"
+      >
+        <a href="#">
+          <img src="img/nutrition.png" alt="" />
+          <span class="ml-2 text-[13px]">Nutrition and drinks</span>
+        </a>
+      </li>
+      <li
+        class="content-div -mb-[11px] hover:bg-[#E1EDE9]"
+        onclick="changeContent('Personal-care', this)"
+      >
+        <a href="#">
+          <img src="img/personal.png" alt="" />
+          <span class="ml-2 text-[13px]">Personal care</span>
+        </a>
+      </li>
+      <li
+        class="content-div -mb-[11px] hover:bg-[#E1EDE9]"
+        onclick="changeContent('Supplements-and-Vitamins', this)"
+      >
+        <a href="#">
+          <img src="img/supplemens.png" alt="" />
+          <span class="ml-2 text-[13px]">Supplements and Vitamins</span>
+        </a>
+      </li>
+      <li
+        class="content-div -mb-[11px] hover:bg-[#E1EDE9]"
+        onclick="changeContent('Veterinary', this)"
+      >
+        <a href="#">
+          <img src="img/veterinary.png" alt="" />
+          <span class="ml-2 text-[13px]">Veterinary</span>
+        </a>
+      </li>
+    </ul>
+
+    <script>
+      // JavaScript
+      function createPopup(popupTriggerClass, closePopupClass) {
+        const popupTriggers = document.querySelectorAll(
+          `.${popupTriggerClass}`
+        );
+        const closePopups = document.querySelectorAll(`.${closePopupClass}`);
+
+        popupTriggers.forEach((popupTrigger) => {
+          const popupId = popupTrigger.getAttribute("data-popup");
+          const popup = document.getElementById(popupId);
+          const popupContent = popup.querySelector(".popupContent");
+
+          // Event listener for opening the popup
+          popupTrigger.addEventListener("click", function () {
+            // Show the popup
+            popup.style.display = "flex";
+            // You can update the content here based on the popupId
+            popupContent.innerHTML = getContentForPopup(popupId);
+          });
+        });
+
+        closePopups.forEach((closePopup) => {
+          const popup = closePopup.closest(".popup");
+
+          // Event listener for closing the popup
+          closePopup.addEventListener("click", function () {
+            popup.style.display = "none"; // Hide the popup
+          });
+        });
+      }
+
+      // Initialize popups
+      createPopup("popupTrigger", "closePopup");
+      // small toggle menu start
+      function smallToggleMenu() {
+        var menu = document.getElementById("smallDeviceMenu");
+        menu.classList.toggle("translate-x-full");
+      }
+      function toggleSubMenu(subMenuId) {
+        var submenu = document.getElementById(subMenuId);
+        if (submenu.style.display === "block") {
+          submenu.style.display = "none";
+        } else {
+          submenu.style.display = "block";
+          document.addEventListener("click", function closeSubMenu(event) {
+            // Check if the click is outside the submenu and the menu item
+            if (
+              !submenu.contains(event.target) &&
+              !document.getElementById("womenCareItem").contains(event.target)
+            ) {
+              submenu.style.display = "none";
+              document.removeEventListener("click", closeSubMenu);
+            }
+          });
+        }
+      }
+    </script>
+    <script src="js/cartProduct.js"></script>
+    <!-- <script src="js/popup.js"></script> -->
+  </body>
+</html>
